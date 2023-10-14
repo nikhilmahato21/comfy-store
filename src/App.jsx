@@ -3,13 +3,14 @@ import HomeLayout from "./pages/HomeLayout";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Landing from "./pages/Landing";
+import Landing, { loader } from "./pages/Landing";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import Products from "./pages/Products";
+import ErrorElement from "./components/ErrorElement";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+        errorElement: <ErrorElement />,
+        loader: loader,
       },
       {
         path: "products",
