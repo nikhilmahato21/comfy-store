@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { customFetch, formatPrice } from "../utils";
+import { customFetch, formatPrice, generateAmountOptions } from "../utils";
 import SectionTitle from "../components/SectionTitle";
 import { useState } from "react";
 
@@ -15,6 +15,10 @@ const SingleProduct = () => {
     product.attributes;
   const rupeesAmount = formatPrice(price);
   const [productColor, setProductColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+  const handleAmount = (e) => {
+    setAmount(parseInt(e.target.value));
+  };
   return (
     <section>
       <div className="text-md breadcrumbs">
@@ -41,6 +45,7 @@ const SingleProduct = () => {
           </h4>
           <p className="mt-3 text-xl">{rupeesAmount}</p>
           <p className="mt-6 leading-8 ">{description}</p>
+          {/* Colors */}
           <div className="mt-6">
             <h4 className="text-md font-medium tracking-wider capitalize">
               colors
@@ -60,6 +65,31 @@ const SingleProduct = () => {
                 );
               })}
             </div>
+          </div>
+          {/* AMOUNT */}
+          <div className="form-control w-full max-w-xs">
+            <label className="label" htmlFor="amount">
+              <h4 className="text-md font-medium -tracking-wider capitalize ">
+                amount
+              </h4>
+            </label>
+            <select
+              className="select select-secondary select-bordered select-md"
+              id="amount"
+              value={amount}
+              onChange={handleAmount}
+            >
+              {generateAmountOptions(10)}
+            </select>
+          </div>
+          {/* CART BTN */}
+          <div className="mt-10">
+            <button
+              className="btn btn-secondary btn-md"
+              onClick={() => console.log("add to bag")}
+            >
+              Add to bag
+            </button>
           </div>
         </div>
       </div>
