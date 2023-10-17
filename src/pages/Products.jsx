@@ -14,20 +14,16 @@ export const loader = async ({ request }) => {
 
 const Products = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const handleFilterToggle = (value) => {
+    setIsFilterOpen(value);
+  };
   return (
     <>
-      <div className="flex justify-between items-center  mb-3">
-        <button
-          className="btn btn-ghost btn-circle btn-md ml-auto p-3"
-          onClick={() => {
-            setIsFilterOpen(!isFilterOpen);
-          }}
-        >
-          <LuSettings2 className="h-6 w-6" />
-        </button>
-      </div>
       {isFilterOpen && <Filters />}
-      <ProductsContainer />
+      <ProductsContainer
+        isFilterOpen={isFilterOpen}
+        toggleFilter={handleFilterToggle}
+      />
       <PaginationContainer />
     </>
   );
