@@ -22,6 +22,10 @@ const FormRange = ({ label, name, size }) => {
         className={`range range-primary ${size}`}
         step={step}
       />
+      <div className="w-full flex justify-between text-xs px-2 mt-2">
+        <span className="font-bold text-md">0</span>
+        <span className="font-bold text-md">Max : {formatPrice(maxPrice)}</span>
+      </div>
     </div>
   );
 };
